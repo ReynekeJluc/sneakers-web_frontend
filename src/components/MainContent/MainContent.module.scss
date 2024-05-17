@@ -1,0 +1,39 @@
+@import url(../../assets/components_style/main_content/history.css);
+@import url(../../assets/components_style/main_content/catalog.css);
+@import url(../../assets/components_style/main_content/sneakers_list.css);
+@import url(../../assets/components_style/main_content/sneakers_kinds.css);
+@import url(../../assets/components_style/main_content/left_part.css);
+@import url(../../assets/components_style/main_content/filters.css);
+
+.content {
+	display: flex;
+	justify-content: space-between;
+	padding: 45px 60px;
+	.content__title {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 40px;
+	}
+	h2 {
+		font-size: 32px;
+		font-weight: 700;
+		margin-bottom: 20px;
+
+		@media (max-width: 1100px) {
+			font-size: 25px;
+		}
+	}
+	.content__left_part {
+		min-width: 35%;
+	}
+	.content__right_part {
+		min-width: 0%;
+	}
+}
+
+@media (max-width: 500px) {
+	.content {
+		padding: 20px 30px;
+	}
+}

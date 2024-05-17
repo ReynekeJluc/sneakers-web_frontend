@@ -1,0 +1,18 @@
+:root {
+	--bg_color: #d4efff;
+
+	--sides_margin: 85px;
+	--border_radius: 20px;
+
+	--green: #a5d364;
+
+	--color_text: #9d9d9d;
+	--color_links: #5c5c5c;
+	--color_border: #eaeaea;
+	--color_search: #f3f3f3;
+
+	--sneakers_width: 230px;
+	--sneakers_height: 280px;
+	--sneakers_image_width: 170px;
+	--sneakers_image_height: 140px;
+}

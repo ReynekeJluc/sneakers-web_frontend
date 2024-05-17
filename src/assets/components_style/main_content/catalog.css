@@ -1,0 +1,38 @@
+.content__catalog {
+	h2 {
+		margin-top: 30px;
+		margin-bottom: 50px !important;
+	}
+	.content__catalog_list {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 20px;
+		margin-top: 40px;
+		margin-bottom: 20px;
+		div {
+			margin-bottom: 35px;
+		}
+		div > a {
+			min-width: 100%;
+			font-size: 20px;
+			border: 1px solid var(--color_border);
+			border-radius: var(--border_radius);
+			padding: 20px 60px;
+			transition: all 0.3s ease-in-out;
+			&:hover {
+				color: #fff;
+				background: var(--green);
+			}
+
+			@media (max-width: 1000px) {
+				font-size: 15px;
+				padding: 15px 50px;
+			}
+			@media (max-width: 300px) {
+				font-size: 13px;
+				padding: 15px 30px;
+			}
+		}
+	}
+}

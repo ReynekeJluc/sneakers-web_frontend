@@ -1,0 +1,13 @@
+.content__history {
+	h2 {
+		margin-bottom: 20px;
+	}
+	p {
+		font-size: 17px;
+		line-height: 1.5em;
+
+		@media (max-width: 1000px) {
+			font-size: 15px;
+		}
+	}
+}

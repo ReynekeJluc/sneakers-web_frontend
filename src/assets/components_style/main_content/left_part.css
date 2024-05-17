@@ -1,0 +1,40 @@
+.content__left_part {
+    max-height: 700px;
+    border: 1px solid var(--color_border);
+    border-radius: 20px;
+    padding: 30px;
+    margin-right: 30px;
+    h3 {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        input,
+        select {
+            font-size: 15px;
+            border: 1px solid var(--color_border);
+            border-radius: 20px;
+            padding: 10px 20px;
+        }
+        .form_btn_filter {
+            cursor: pointer;
+            max-width: 300px;
+            min-height: 30px;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+            background: #fff;
+            &:hover {
+                color: #fff;
+                background: var(--green);
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        display: none;
+    }
+}
