@@ -1,0 +1,114 @@
+.content__title {
+	display: flex;
+	justify-content: space-between;
+	margin: 40px;
+	h2 {
+		font-size: 32px;
+		font-weight: 700;
+		margin-bottom: 20px;
+
+		@media (max-width: 1100px) {
+			font-size: 25px;
+		}
+	}
+}
+
+.content__block {
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+	margin-bottom: 40px;
+	line-height: 1.2em;
+	.content__block__image {
+		min-width: 45%;
+		margin-right: 5%;
+		img {
+			width: 100%;
+			max-height: 100%;
+			border: 2px solid var(--color_border);
+			border-radius: var(--border_radius);
+			margin-left: 5%;
+		}
+	}
+	.content__block__info {
+		position: relative;
+		margin-right: 5%;
+		h3 {
+			font-weight: 600;
+			font-size: 30px;
+			line-height: 35px;
+		}
+		aside {
+			margin: 40px 0 30px 0;
+		}
+		.content__block__info_brand {
+			display: flex;
+			align-items: center;
+			margin: 15px 0 30px 0;
+			a {
+				margin-left: 10px;
+			}
+		}
+		.content__block__order {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			.content__block__order_text {
+				display: flex;
+				min-width: 150px;
+				b {
+					margin-left: 10px;
+				}
+			}
+			.content__block__order_btns {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+				button {
+					font-size: 15px;
+					padding: 10px 40px;
+					border: 1px solid var(--color_border);
+					border-radius: var(--border_radius);
+					transition: all 0.3s ease-in-out;
+					&:hover {
+						color: #fff;
+						background: var(--green);
+					}
+				}
+			}
+		}
+		.content__block__sources {
+			font-size: 16px;
+			color: var(--color_text);
+			h5 {
+				font-weight: 600;
+				margin-bottom: 15px;
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+				gap: 5px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1000px) {
+	.content__block {
+		display: block;
+	}
+	.content__block__image {
+		margin-right: 0 !important;
+		margin-bottom: 5%;
+		margin-top: 3%;
+	}
+}
+
+@media (max-width: 600px) {
+	.content__block__order {
+		display: block !important;
+	}
+	.content__block__order_btns {
+		margin: 20px 0 40px 0;
+	}
+}

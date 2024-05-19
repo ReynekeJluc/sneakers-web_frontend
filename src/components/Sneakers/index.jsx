@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
+
 import styles from './Sneakers.module.scss';
 
 function Sneakers(props) {
 	return (
 		<li className={styles.sneakers}>
-			<a href='./src/pages/nike/blazer_mid_suede.html'>
+			<Link to={`/sneakers/${props._id}`}>
 				<img
 					src='./public/img/icons/favor_def.svg'
 					className={styles.sneakers__favor}
@@ -11,7 +13,7 @@ function Sneakers(props) {
 				/>
 				<div className={styles.sneakers__image}>
 					<img
-						src='./public/img/sneakers/_for_main_page/1.png'
+						src={`http://localhost:3000/upload/${props.imageUrl}`}
 						alt='img sneakers'
 					/>
 				</div>
@@ -27,7 +29,7 @@ function Sneakers(props) {
 						alt='add cart'
 					/>
 				</div>
-			</a>
+			</Link>
 		</li>
 	);
 }

@@ -1,4 +1,8 @@
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
+
+import { fetchAuthMe } from './redux/slices/auth.jsx';
 
 import Footer from './components/Footer/';
 import Header from './components/Header/';
@@ -11,6 +15,12 @@ import Login from './pages/Login/';
 import Register from './pages/Register/';
 
 function App() {
+	const dispatch = useDispatch();
+
+	React.useEffect(() => {
+		dispatch(fetchAuthMe());
+	}, []);
+
 	return (
 		<div className='wrapper'>
 			<Header></Header>

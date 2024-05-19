@@ -82,7 +82,13 @@ function MainContent(props) {
 					</div>
 					<ul className={styles.list__sneakers}>
 						{sneakers.map((obj, index) => (
-							<Sneakers title={obj.title} price={obj.price} />
+							<Sneakers
+								key={index}
+								_id={obj._id}
+								title={obj.title}
+								price={obj.price}
+								imageUrl={obj.imageUrl}
+							/>
 						))}
 					</ul>
 				</div>

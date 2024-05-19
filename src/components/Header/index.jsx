@@ -1,10 +1,23 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { selectIsAuth } from '../../redux/slices/auth.jsx';
+
+import { logout } from '../../redux/slices/auth';
 import styles from './Header.module.scss';
 
 function Header(props) {
-	const isAuth = false;
+	const dispatch = useDispatch();
+	const isAuth = useSelector(selectIsAuth);
+
+	const onClickLogout = () => {
+		if (window.confirm('Вы действительно хотите выйти?')) {
+			dispatch(logout());
+			window.localStorage.removeItem('token');
+		}
+	};
+
 	return (
 		<header className={styles.header}>
 			<Link to='/' className={styles.logo}>
@@ -22,7 +35,11 @@ function Header(props) {
 						<Link to='/add-sneakers' className={styles.header__link}>
 							Добавить кроссовки
 						</Link>
-						<Link to='/login' className={styles.header__link}>
+						<Link
+							onClick={onClickLogout}
+							to='/login'
+							className={styles.header__link}
+						>
 							Выйти
 						</Link>
 					</>
