@@ -23,7 +23,7 @@ function SneakersPage(props) {
 					})
 					.catch(rej => {
 						console.warn(rej);
-						alert('Ошибка при получении данных о кроссовках');
+						alert('Ошибка при получении данных о брэндах');
 					});
 			})
 			.catch(rej => {
@@ -32,7 +32,7 @@ function SneakersPage(props) {
 			});
 	}, []);
 
-	console.log(data);
+	//console.log(data);
 
 	return (
 		<div className={styles.wrapper}>

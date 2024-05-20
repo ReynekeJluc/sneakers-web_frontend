@@ -32,7 +32,7 @@ function Login() {
 		const data = await dispatch(fetchAuth(values));
 
 		if (!data.payload) {
-			alert('Не далось авторизоваться!');
+			alert('Не удалось авторизоваться!');
 		}
 		if ('token' in data.payload) {
 			window.localStorage.setItem('token', data.payload.token);
@@ -65,7 +65,13 @@ function Login() {
 					{...register('password', { required: 'Введите пароль' })}
 					fullWidth
 				/>
-				<Button type='submit' size='large' variant='contained' fullWidth>
+				<Button
+					disabled={!isValid}
+					type='submit'
+					size='large'
+					variant='contained'
+					fullWidth
+				>
 					Войти
 				</Button>
 			</form>

@@ -13,11 +13,19 @@
 }
 
 .image {
-	width: 100%;
+	display: block;
+	max-width: 50%;
+	max-height: 50%;
 }
 
 .tags {
-	margin: 15px 0;
+	display: block !important;
+	margin: 10px 0 !important;
+	max-width: 50%;
+}
+
+.addImage {
+	margin-top: 20px !important;
 }
 
 .editor {
