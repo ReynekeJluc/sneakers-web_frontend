@@ -32,6 +32,9 @@ function Header(props) {
 			<div className={styles.header__links}>
 				{isAuth ? (
 					<>
+						<Link to='/admin' className={styles.header__link}>
+							Админка
+						</Link>
 						<Link to='/add-sneakers' className={styles.header__link}>
 							Добавить кроссовки
 						</Link>
@@ -66,6 +69,9 @@ function Header(props) {
 					<div className={styles.list}>
 						{isAuth ? (
 							<>
+								<Link to='/admin' className={styles.header__link}>
+									Админка
+								</Link>
 								<Link to='/add-sneakers' className={styles.header__link}>
 									Добавить кроссовки
 								</Link>

@@ -7,6 +7,7 @@ import { fetchAuthMe } from './redux/slices/auth.jsx';
 import Footer from './components/Footer/';
 import Header from './components/Header/';
 
+import Admin from './pages/Admin';
 import Home from './pages/Home';
 import SneakersPage from './pages/SneakersPage';
 
@@ -28,6 +29,7 @@ function App() {
 			<hr />
 			<Routes>
 				<Route path='/' element={<Home />}></Route>
+				<Route path='/admin' element={<Admin />}></Route>
 				<Route path='/sneakers/:id' element={<SneakersPage />}></Route>
 				<Route path='/login' element={<Login />}></Route>
 				<Route path='/register' element={<Register />}></Route>

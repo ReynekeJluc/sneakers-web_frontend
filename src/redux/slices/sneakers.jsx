@@ -10,6 +10,13 @@ export const fetchSneakers = createAsyncThunk(
 	}
 );
 
+export const fetchRemoveSneakers = createAsyncThunk(
+	'sneakers/fetchRemoveSneakers',
+	async id => {
+		await axios.delete(`/sneakers/${id}`);
+	}
+);
+
 const initialState = {
 	sneakers: [],
 };
@@ -20,11 +27,18 @@ const sneakersSlice = createSlice({
 	reducers: {},
 	extraReducers(builder) {
 		builder
+			// получение кроссовок
 			.addCase(fetchSneakers.fulfilled, (state, action) => {
 				state.sneakers = action.payload;
 			})
 			.addCase(fetchSneakers.rejected, state => {
 				state.sneakers = [];
+			})
+			//удаление кроссовок
+			.addCase(fetchRemoveSneakers.pending, (state, action) => {
+				state.sneakers = state.sneakers.filter(
+					obj => obj._id !== action.meta.arg //! Точно ли items?
+				);
 			});
 	},
 });
