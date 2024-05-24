@@ -1,0 +1,18 @@
+.content {
+	.content__title {
+		margin-bottom: 20px !important;
+		.content__title_back_btn {
+			opacity: 60%;
+			transition: opacity 0.3s ease-in-out;
+			&:hover {
+				opacity: 100%;
+			}
+		}
+		@media (max-width: 1200px) {
+			margin-bottom: 0px !important;
+		}
+	}
+	p {
+		line-height: 1.5em;
+	}
+}

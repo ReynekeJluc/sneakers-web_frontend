@@ -1,21 +1,23 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Form from '../Form';
 import Sneakers from '../Sneakers/';
 
+import { fetchBrand } from '../../redux/slices/brand.jsx';
 import { fetchSneakers } from '../../redux/slices/sneakers.jsx';
 import styles from './MainContent.module.scss';
 
 function MainContent(props) {
 	const dispatch = useDispatch();
-	const { sneakers } = useSelector(state => state.sneakers);
+	const { sneakers } = useSelector(state => state.sneakers); // извлекаем данные из redux-хранилища
+	const { brand } = useSelector(state => state.brand); // извлекаем данные из redux-хранилища
 
 	React.useEffect(() => {
 		dispatch(fetchSneakers());
+		dispatch(fetchBrand());
 	}, []);
-
-	//console.log(sneakers);
 
 	return (
 		<>
@@ -46,15 +48,11 @@ function MainContent(props) {
 					<div className={styles.content__catalog}>
 						<h2>Лидеры продаж</h2>
 						<div className={styles.content__catalog_list}>
-							<div>
-								<a href='./src/pages/nike/index.html'>Nike</a>
-							</div>
-							<div>
-								<a href='./src/pages/puma/index.html'>Puma</a>
-							</div>
-							<div>
-								<a href='./src/pages/under_armour/'>Under Armour</a>
-							</div>
+							{brand.map((obj, index) => (
+								<div key={index}>
+									<Link to={`/brand/${obj._id}`}>{obj.brand}</Link>
+								</div>
+							))}
 						</div>
 					</div>
 					<div className={styles.content__title}>

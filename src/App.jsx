@@ -11,6 +11,7 @@ import Home from './pages/Home';
 import SneakersPage from './pages/SneakersPage';
 
 import AddSneakers from './pages/AddSneakers/';
+import BrandPage from './pages/BrandPage/index.jsx';
 import Login from './pages/Login/';
 import Register from './pages/Register/';
 
@@ -31,6 +32,7 @@ function App() {
 				<Route path='/login' element={<Login />}></Route>
 				<Route path='/register' element={<Register />}></Route>
 				<Route path='/add-sneakers' element={<AddSneakers />}></Route>
+				<Route path='/brand/:id' element={<BrandPage />}></Route>
 			</Routes>
 			<hr />
 			<Footer></Footer>
