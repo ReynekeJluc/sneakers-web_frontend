@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import axios from '../../axios.jsx';
 
@@ -7,6 +7,7 @@ import styles from './SneakersPage.module.scss';
 
 function SneakersPage(props) {
 	const [data, setData] = React.useState();
+	const [data_brand, setData_brand] = React.useState('');
 	const [IsLoading, setIsLoading] = React.useState(false);
 	const { id } = useParams();
 
@@ -17,6 +18,8 @@ function SneakersPage(props) {
 				axios(`/brand/${res1.data.brand}`)
 					.then(res2 => {
 						res1.data.brand = res2.data.brand;
+
+						setData_brand(res2.data._id);
 
 						setData(res1.data);
 						setIsLoading(true);
@@ -32,8 +35,6 @@ function SneakersPage(props) {
 			});
 	}, []);
 
-	//console.log(data);
-
 	return (
 		<div className={styles.wrapper}>
 			<hr />
@@ -42,9 +43,9 @@ function SneakersPage(props) {
 					<div className={styles.content__unification}>
 						<div className={styles.content__title}>
 							<h2>{data.title}</h2>
-							<a className={styles.content__title_back_btn} href='/'>
+							<Link className={styles.content__title_back_btn} to='/'>
 								<img src='../../../public/img/icons/back.svg' alt='back' />
-							</a>
+							</Link>
 						</div>
 						<div className={styles.content__block}>
 							<div className={styles.content__block__image}>
@@ -57,7 +58,7 @@ function SneakersPage(props) {
 								<h3>Что вам нужно знать об этой модели:</h3>
 								<div className={styles.content__block__info_brand}>
 									<b>Производитель:</b>
-									<a href='?'>{data.brand}</a>
+									<Link to={`/brand/${data_brand}`}>{data.brand}</Link>
 								</div>
 								<aside>{data.desc}</aside>
 								<div className={styles.content__block__order}>

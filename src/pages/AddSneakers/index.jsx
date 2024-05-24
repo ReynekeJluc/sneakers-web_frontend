@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/slices/auth';
 
 import axios from '../../axios.jsx';
@@ -193,9 +193,9 @@ function AddSneakers() {
 				>
 					Опубликовать
 				</Button>
-				<a href='/'>
+				<Link to='/'>
 					<Button size='large'>Отмена</Button>
-				</a>
+				</Link>
 			</div>
 		</Paper>
 	);
