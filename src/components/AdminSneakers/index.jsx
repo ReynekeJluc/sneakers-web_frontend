@@ -1,17 +1,19 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 
+import { selectIsAuth } from '../../redux/slices/auth';
 import { fetchRemoveSneakers } from '../../redux/slices/sneakers.jsx';
 
 import styles from './AdminSneakers.module.scss';
 
 function AdminSneakers(props) {
+	const isAuth = useSelector(selectIsAuth);
 	const dispatch = useDispatch();
 
-	React.useEffect(() => {
-		dispatch(fetchRemoveSneakers());
-	}, []);
+	// React.useEffect(() => {
+	// 	dispatch(fetchRemoveSneakers());
+	// }, []);
 
 	const onClickRemove = () => {
 		if (window.confirm('Вы действительно хотите удалить статью?')) {
@@ -19,16 +21,22 @@ function AdminSneakers(props) {
 		}
 	};
 
+	if (!window.localStorage.getItem('token') && !isAuth) {
+		return <Navigate to='/'></Navigate>;
+	}
+
 	return (
 		<li className={styles.sneakers}>
-			<img
-				src='./public/img/icons/edit.png'
-				width={30}
-				height={30}
-				style={{ margin: '0 100px 0 0', cursor: 'pointer' }}
-				className={styles.sneakers__edit}
-				alt='add edit'
-			/>
+			<Link to={`/sneakers/${props._id}/edit`}>
+				<img
+					src='./public/img/icons/edit.png'
+					width={30}
+					height={30}
+					style={{ margin: '0 100px 0 0', cursor: 'pointer' }}
+					className={styles.sneakers__edit}
+					alt='add edit'
+				/>
+			</Link>
 			<img
 				src='./public/img/icons/delete.png'
 				width={30}

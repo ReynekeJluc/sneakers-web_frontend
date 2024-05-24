@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/slices/auth';
 
 import axios from '../../axios.jsx';
@@ -19,6 +19,10 @@ import {
 import styles from './AddSneakers.module.scss';
 
 function AddSneakers() {
+	const { id } = useParams();
+
+	const isEditing = Boolean(id);
+
 	const isAuth = useSelector(selectIsAuth);
 	const inputFileRef = React.useRef(null);
 	const navigate = useNavigate();
@@ -28,7 +32,7 @@ function AddSneakers() {
 	const [desc, setDesc] = React.useState('');
 	const [imageUrl, setImageUrl] = React.useState('');
 	const [price, setPrice] = React.useState('');
-	const [sources, setSources] = React.useState('');
+	const [sources, setSources] = React.useState([]);
 
 	if (!window.localStorage.getItem('token') && !isAuth) {
 		return <Navigate to='/'></Navigate>;
@@ -48,14 +52,37 @@ function AddSneakers() {
 			});
 	}, []);
 
+	React.useEffect(() => {
+		const fetchData = async () => {
+			if (id) {
+				try {
+					const { data } = await axios.get(`/sneakers/${id}`);
+					const brandRes = await axios.get(`/brand/${data.brand}`);
+					setBrand(brandRes.data.brand);
+					setTitle(data.title);
+					setDesc(data.desc);
+					setImageUrl(data.imageUrl);
+					setPrice(data.price);
+					setSources(data.sources);
+				} catch (error) {
+					console.log(error.message);
+				}
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	const handleChangeFile = async e => {
 		try {
 			const formData = new FormData();
 			formData.append('image', e.target.files[0]);
 
 			const { data } = await axios.post('/upload', formData);
-
-			setImageUrl(data.url);
+			if (imageUrl) {
+				onClickRemoveImage();
+			}
+			setImageUrl(data.url.replace('/upload/', ''));
 		} catch (error) {
 			console.warn(error);
 			alert('Ошибка при загрузке файла');
@@ -63,6 +90,7 @@ function AddSneakers() {
 	};
 
 	const onClickRemoveImage = () => {
+		axios.delete(`/upload/${imageUrl}/delete`);
 		setImageUrl('');
 	};
 
@@ -73,21 +101,23 @@ function AddSneakers() {
 				brand,
 				desc,
 				price,
-				sources: sources.split(','),
+				sources,
 				imageUrl: imageUrl.replace('/upload/', ''),
 			};
 
-			const { data } = await axios.post('/sneakers', fields);
-			const id = data._id;
+			const { data } = isEditing
+				? await axios.patch(`/sneakers/${id}`, fields)
+				: await axios.post('/sneakers', fields);
+			const _id = isEditing ? id : data._id;
 
-			navigate(`/sneakers/${id}`);
+			navigate(`/sneakers/${_id}`);
 		} catch (error) {
 			console.warn(error);
 			alert('Ошибка при создании записи');
 		}
 	};
 
-	console.log({ title, brand, desc, price, sources, imageUrl });
+	console.log({ sources });
 
 	return (
 		<Paper style={{ padding: 30 }}>
@@ -102,7 +132,7 @@ function AddSneakers() {
 					</Button>
 					<img
 						className={styles.image}
-						src={`http://localhost:3000${imageUrl}`}
+						src={`http://localhost:3000/upload/${imageUrl}`}
 						alt='Uploaded'
 					/>
 				</>
@@ -168,7 +198,7 @@ function AddSneakers() {
 					borderRadius: '3px',
 					padding: '10px',
 				}}
-				onChange={e => setSources(e.target.value)}
+				onChange={e => setSources(e.target.value.split(','))}
 			/>
 			<Button
 				onClick={() => inputFileRef.current.click()}
@@ -191,7 +221,7 @@ function AddSneakers() {
 					size='large'
 					variant='contained'
 				>
-					Опубликовать
+					{isEditing ? 'Сохранить' : 'Опубликовать'}
 				</Button>
 				<Link to='/'>
 					<Button size='large'>Отмена</Button>
