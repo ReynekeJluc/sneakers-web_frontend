@@ -29,7 +29,7 @@ const sneakersSlice = createSlice({
 		builder
 			// получение кроссовок
 			.addCase(fetchSneakers.fulfilled, (state, action) => {
-				state.sneakers = action.payload;
+				state.sneakers = action.payload.data;
 			})
 			.addCase(fetchSneakers.rejected, state => {
 				state.sneakers = [];
@@ -37,7 +37,7 @@ const sneakersSlice = createSlice({
 			//удаление кроссовок
 			.addCase(fetchRemoveSneakers.pending, (state, action) => {
 				state.sneakers = state.sneakers.filter(
-					obj => obj._id !== action.meta.arg //! Точно ли items?
+					obj => obj._id !== action.meta.arg
 				);
 			});
 	},

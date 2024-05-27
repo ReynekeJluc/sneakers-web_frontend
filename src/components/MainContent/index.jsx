@@ -1,24 +1,45 @@
-import { Pagination } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from '../../axios.jsx';
 
+import { Pagination } from '@mui/material';
 import Form from '../Form';
 import Sneakers from '../Sneakers/';
 
 import { fetchBrand } from '../../redux/slices/brand.jsx';
+import { fetchPages } from '../../redux/slices/pages.jsx';
 import { fetchSneakers } from '../../redux/slices/sneakers.jsx';
 import styles from './MainContent.module.scss';
 
 function MainContent(props) {
 	const dispatch = useDispatch();
+
 	const { sneakers } = useSelector(state => state.sneakers); // извлекаем данные из redux-хранилища
 	const { brand } = useSelector(state => state.brand); // извлекаем данные из redux-хранилища
+	const { pages } = useSelector(state => state.pages); // извлекаем данные из redux-хранилища
 
 	React.useEffect(() => {
 		dispatch(fetchSneakers());
 		dispatch(fetchBrand());
+		dispatch(fetchPages());
 	}, []);
+	const [currentPage, setCurrentPage] = React.useState(pages.currentPage || 1);
+	const [pageSize, setPageSize] = React.useState(pages.pageSize || 3);
+
+	const handlePageChange = async e => {
+		await axios
+			.get(`/sneakers?page=${e.target.textContent}&pageSize=${pageSize}`)
+			.then(res => {
+				setCurrentPage(res.data.pages.currentPage);
+				setPageSize(res.data.pages.pageSize);
+			})
+			.catch(err => {
+				console.warn(err);
+			});
+	};
+
+	console.log(sneakers);
 
 	return (
 		<>
@@ -90,7 +111,12 @@ function MainContent(props) {
 							/>
 						))}
 					</ul>
-					<Pagination count={10} shape='rounded' />
+					<Pagination
+						count={pageSize}
+						page={currentPage}
+						onChange={handlePageChange}
+						shape='rounded'
+					/>
 				</div>
 			</div>
 		</>
