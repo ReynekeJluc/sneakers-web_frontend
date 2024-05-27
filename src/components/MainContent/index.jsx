@@ -7,6 +7,8 @@ import { Pagination } from '@mui/material';
 import Form from '../Form';
 import Sneakers from '../Sneakers/';
 
+import { setSneakers } from '../../redux/slices/sneakers.jsx';
+
 import { fetchBrand } from '../../redux/slices/brand.jsx';
 import { fetchPages } from '../../redux/slices/pages.jsx';
 import { fetchSneakers } from '../../redux/slices/sneakers.jsx';
@@ -33,13 +35,13 @@ function MainContent(props) {
 			.then(res => {
 				setCurrentPage(res.data.pages.currentPage);
 				setPageSize(res.data.pages.pageSize);
+
+				dispatch(setSneakers(res.data.data));
 			})
 			.catch(err => {
 				console.warn(err);
 			});
 	};
-
-	console.log(sneakers);
 
 	return (
 		<>

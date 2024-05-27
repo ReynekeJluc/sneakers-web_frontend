@@ -24,7 +24,11 @@ const initialState = {
 const sneakersSlice = createSlice({
 	name: 'sneakers',
 	initialState,
-	reducers: {},
+	reducers: {
+		setSneakers(state, action) {
+			state.sneakers = action.payload;
+		},
+	},
 	extraReducers(builder) {
 		builder
 			// получение кроссовок
@@ -44,3 +48,4 @@ const sneakersSlice = createSlice({
 });
 
 export const sneakersReducer = sneakersSlice.reducer;
+export const { setSneakers } = sneakersSlice.actions;
