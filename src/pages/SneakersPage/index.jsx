@@ -35,6 +35,8 @@ function SneakersPage(props) {
 			});
 	}, []);
 
+	console.log(process.env.REACT_APP_API_URL);
+
 	return (
 		<div className={styles.wrapper}>
 			<hr />
