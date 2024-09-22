@@ -131,7 +131,7 @@ function AddSneakers() {
 					</Button>
 					<img
 						className={styles.image}
-						src={`${process.env.REACT_APP_API_URL}/upload/${imageUrl}`}
+						src={`/upload/${imageUrl}`}
 						alt='Uploaded'
 					/>
 				</>
