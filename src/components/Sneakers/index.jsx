@@ -12,7 +12,10 @@ function Sneakers(props) {
 					alt='add favor'
 				/>
 				<div className={styles.sneakers__image}>
-					<img src={`/upload/${props.imageUrl}`} alt='img sneakers' />
+					<img
+						src={`${process.env.REACT_APP_API_URL}/upload/${props.imageUrl}`}
+						alt='img sneakers'
+					/>
 				</div>
 				<div className={styles.sneakers__title}>{props.title}</div>
 				<div className={styles.block__info}>

@@ -49,7 +49,10 @@ function SneakersPage(props) {
 						</div>
 						<div className={styles.content__block}>
 							<div className={styles.content__block__image}>
-								<img src={`/upload/${data.imageUrl}`} alt='sneakers' />
+								<img
+									src={`${process.env.REACT_APP_API_URL}/upload/${data.imageUrl}`}
+									alt='sneakers'
+								/>
 							</div>
 							<div className={styles.content__block__info}>
 								<h3>Что вам нужно знать об этой модели:</h3>
