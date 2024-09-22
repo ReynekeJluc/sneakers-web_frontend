@@ -29,18 +29,19 @@ function MainContent(props) {
 	const [currentPage, setCurrentPage] = React.useState(pages.currentPage || 1);
 	const [pageSize, setPageSize] = React.useState(pages.pageSize || 3);
 
-	const handlePageChange = async e => {
-		await axios
-			.get(`/sneakers?page=${e.target.textContent}&pageSize=${pageSize}`)
-			.then(res => {
-				setCurrentPage(res.data.pages.currentPage);
-				setPageSize(res.data.pages.pageSize);
+	const handlePageChange = async (event, value) => {
+		try {
+			const res = await axios.get(
+				`/sneakers?page=${value}&pageSize=${pageSize}`
+			);
 
-				dispatch(setSneakers(res.data.data));
-			})
-			.catch(err => {
-				console.warn(err);
-			});
+			setCurrentPage(res.data.pages.currentPage);
+			setPageSize(res.data.pages.pageSize);
+
+			dispatch(setSneakers(res.data.data));
+		} catch (err) {
+			console.warn(err);
+		}
 	};
 
 	return (
@@ -114,7 +115,7 @@ function MainContent(props) {
 						))}
 					</ul>
 					<Pagination
-						count={pageSize}
+						count={pages.totalPages}
 						page={currentPage}
 						onChange={handlePageChange}
 						shape='rounded'
