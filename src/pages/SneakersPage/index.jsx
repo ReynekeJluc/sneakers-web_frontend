@@ -50,7 +50,7 @@ function SneakersPage(props) {
 						<div className={styles.content__block}>
 							<div className={styles.content__block__image}>
 								<img
-									src={`http://localhost:3000/upload/${data.imageUrl}`}
+									src={`${process.env.REACT_APP_API_URL}/upload/${data.imageUrl}`}
 									alt='sneakers'
 								/>
 							</div>
