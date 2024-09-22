@@ -89,12 +89,12 @@ function MainContent(props) {
 								<h3>Настройте под себя</h3>
 								<img
 									className={styles.filters_open}
-									src='./public/img/icons/down_arrow.svg'
+									src='/img/icons/down_arrow.svg'
 									alt='arrow'
 								/>
 								<img
 									className={styles.filters_close}
-									src='./public/img/icons/cancel.svg'
+									src='/img/icons/cancel.svg'
 									alt='cancel'
 								/>
 							</div>

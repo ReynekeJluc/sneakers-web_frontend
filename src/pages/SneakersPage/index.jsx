@@ -44,7 +44,7 @@ function SneakersPage(props) {
 						<div className={styles.content__title}>
 							<h2>{data.title}</h2>
 							<Link className={styles.content__title_back_btn} to='/'>
-								<img src='../../../public/img/icons/back.svg' alt='back' />
+								<img src='/img/icons/back.svg' alt='back' />
 							</Link>
 						</div>
 						<div className={styles.content__block}>

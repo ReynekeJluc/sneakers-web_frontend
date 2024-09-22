@@ -22,7 +22,7 @@ function Header(props) {
 		<header className={styles.header}>
 			<Link to='/' className={styles.logo}>
 				<div className={styles.logo__block}>
-					<img src='./public/img/icons/logo.svg' alt='logotype' />
+					<img src='/img/icons/logo.svg' alt='logotype' />
 					<div className={styles.logo__name}>
 						<h1>React sneakers</h1>
 						<p>Магазин лучших кроссовок</p>
@@ -60,7 +60,7 @@ function Header(props) {
 			<div className={styles.header__burger}>
 				<img
 					className={styles.header__burger_img}
-					src='./public/img/icons/burger.svg'
+					src='/img/icons/burger.svg'
 					alt='burger'
 				/>
 			</div>
@@ -92,7 +92,7 @@ function Header(props) {
 					</div>
 					<img
 						className={styles.burger_cancel}
-						src='./public/img/icons/cancel.svg'
+						src='/img/icons/cancel.svg'
 						alt='cancel'
 					/>
 				</div>

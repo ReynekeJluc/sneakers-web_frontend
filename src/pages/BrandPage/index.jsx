@@ -30,7 +30,7 @@ function BrandPage(props) {
 					<div className={styles.content__title}>
 						<h2>{IsLoading ? data.brand : null}</h2>
 						<Link className={styles.content__title_back_btn} to='/'>
-							<img src='../../../public/img/icons/back.svg' alt='back' />
+							<img src='/img/icons/back.svg' alt='back' />
 						</Link>
 					</div>
 					<p>{IsLoading ? data.desc : null}</p>

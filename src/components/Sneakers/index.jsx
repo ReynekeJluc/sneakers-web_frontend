@@ -7,7 +7,7 @@ function Sneakers(props) {
 		<li className={styles.sneakers}>
 			<Link to={`/sneakers/${props._id}`}>
 				<img
-					src='./public/img/icons/favor_def.svg'
+					src='/img/icons/favor_def.svg'
 					className={styles.sneakers__favor}
 					alt='add favor'
 				/>
@@ -24,7 +24,7 @@ function Sneakers(props) {
 						<b>{props.price} &#8381;</b>
 					</div>
 					<img
-						src='./public//img/icons/added_def.svg'
+						src='/img/icons/added_def.svg'
 						className={styles.sneakers__added}
 						alt='add cart'
 					/>

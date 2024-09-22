@@ -27,7 +27,7 @@ function AdminSneakers(props) {
 		<li className={styles.sneakers}>
 			<Link to={`/sneakers/${props._id}/edit`}>
 				<img
-					src='./public/img/icons/edit.png'
+					src='/img/icons/edit.png'
 					width={30}
 					height={30}
 					style={{ margin: '0 100px 0 0', cursor: 'pointer' }}
@@ -36,7 +36,7 @@ function AdminSneakers(props) {
 				/>
 			</Link>
 			<img
-				src='./public/img/icons/delete.png'
+				src='/img/icons/delete.png'
 				width={30}
 				height={30}
 				style={{ cursor: 'pointer' }}
