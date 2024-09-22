@@ -52,7 +52,7 @@ function SneakersPage(props) {
 						<div className={styles.content__block}>
 							<div className={styles.content__block__image}>
 								<img
-									src={`${process.env.REACT_APP_API_URL}/upload/${data.imageUrl}`}
+									src={`https://sneakers-web-backend.onrender.com/upload/${data.imageUrl}`}
 									alt='sneakers'
 								/>
 							</div>

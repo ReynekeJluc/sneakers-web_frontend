@@ -131,8 +131,7 @@ function AddSneakers() {
 					</Button>
 					<img
 						className={styles.image}
-						src={`${process.env.REACT_APP_API_URL}/upload/${imageUrl}`}
-						alt='Uploaded'
+						https:alt='Uploaded' //sneakers-web-backend.onrender.com/upload/${imageUrl}`}
 					/>
 				</>
 			)}

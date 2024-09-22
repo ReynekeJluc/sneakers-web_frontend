@@ -47,7 +47,7 @@ function AdminSneakers(props) {
 			<Link to={`/sneakers/${props._id}`}>
 				<div className={styles.sneakers__image}>
 					<img
-						src={`${process.env.REACT_APP_API_URL}/upload/${props.imageUrl}`}
+						src={`https://sneakers-web-backend.onrender.com/upload/${props.imageUrl}`}
 						alt='img sneakers'
 					/>
 				</div>
