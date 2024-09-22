@@ -5,19 +5,17 @@ import { Link, Navigate } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/slices/auth';
 import { fetchRemoveSneakers } from '../../redux/slices/sneakers.jsx';
 
+import { fetchAllSneakers } from '../../redux/slices/allsneakers.jsx';
 import styles from './AdminSneakers.module.scss';
 
 function AdminSneakers(props) {
 	const isAuth = useSelector(selectIsAuth);
 	const dispatch = useDispatch();
 
-	// React.useEffect(() => {
-	// 	dispatch(fetchRemoveSneakers());
-	// }, []);
-
 	const onClickRemove = () => {
 		if (window.confirm('Вы действительно хотите удалить статью?')) {
 			dispatch(fetchRemoveSneakers(props._id));
+			dispatch(fetchAllSneakers);
 		}
 	};
 

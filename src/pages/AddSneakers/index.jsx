@@ -58,6 +58,7 @@ function AddSneakers() {
 				try {
 					const { data } = await axios.get(`/sneakers/${id}`);
 					const brandRes = await axios.get(`/brand/${data.brand}`);
+
 					setBrand(brandRes.data.brand);
 					setTitle(data.title);
 					setDesc(data.desc);
@@ -116,8 +117,6 @@ function AddSneakers() {
 			alert('Ошибка при создании записи');
 		}
 	};
-
-	console.log({ sources });
 
 	return (
 		<Paper style={{ padding: 30 }}>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { fetchSneakersAdmin } from '../../redux/slices/sneakersadmin.jsx';
 import AdminSneakers from '../AdminSneakers/index.jsx';
 
-import { fetchSneakers } from '../../redux/slices/sneakers.jsx';
 import styles from './AdminContent.module.scss';
 
 function MainContent(props) {
 	const dispatch = useDispatch();
-	const { sneakers } = useSelector(state => state.sneakers); // извлекаем данные из redux-хранилища
+	const { sneakers } = useSelector(state => state.adminSneakers); // извлекаем данные из redux-хранилища
 
 	React.useEffect(() => {
-		dispatch(fetchSneakers());
+		dispatch(fetchSneakersAdmin());
 	}, []);
 
 	return (
