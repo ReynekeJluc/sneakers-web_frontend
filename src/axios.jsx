@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const con = process.env.REACT_APP_API_URL;
+const con = 'https://sneakers-web-backend.onrender.com/';
 const instance = axios.create({
 	baseURL: con,
 });
