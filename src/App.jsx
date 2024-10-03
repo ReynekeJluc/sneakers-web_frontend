@@ -36,6 +36,8 @@ function App() {
 				<Route path='/register' element={<Register />}></Route>
 				<Route path='/add-sneakers' element={<AddSneakers />}></Route>
 				<Route path='/brand/:id' element={<BrandPage />}></Route>
+
+				<Route path='*' element={<Navigate replace to='/' />} />
 			</Routes>
 			<hr />
 			<Footer></Footer>
