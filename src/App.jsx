@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { fetchAuthMe } from './redux/slices/auth.jsx';
 
@@ -36,6 +36,8 @@ function App() {
 				<Route path='/register' element={<Register />}></Route>
 				<Route path='/add-sneakers' element={<AddSneakers />}></Route>
 				<Route path='/brand/:id' element={<BrandPage />}></Route>
+
+				<Route path='*' element={<Navigate replace to='/' />} />
 			</Routes>
 			<hr />
 			<Footer></Footer>
