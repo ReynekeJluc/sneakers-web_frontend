@@ -4,8 +4,8 @@ import { Link, Navigate } from 'react-router-dom';
 
 import { selectIsAuth } from '../../redux/slices/auth';
 import { fetchRemoveSneakers } from '../../redux/slices/sneakers.jsx';
+import { fetchSneakersAdmin } from '../../redux/slices/sneakersadmin.jsx';
 
-import { fetchAllSneakers } from '../../redux/slices/allsneakers.jsx';
 import styles from './AdminSneakers.module.scss';
 
 function AdminSneakers(props) {
@@ -14,8 +14,9 @@ function AdminSneakers(props) {
 
 	const onClickRemove = () => {
 		if (window.confirm('Вы действительно хотите удалить статью?')) {
-			dispatch(fetchRemoveSneakers(props._id));
-			dispatch(fetchAllSneakers());
+			dispatch(fetchRemoveSneakers(props._id)).then(() => {
+				dispatch(fetchSneakersAdmin());
+			});
 		}
 	};
 
