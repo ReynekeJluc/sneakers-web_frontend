@@ -15,7 +15,7 @@ function AdminSneakers(props) {
 	const onClickRemove = () => {
 		if (window.confirm('Вы действительно хотите удалить статью?')) {
 			dispatch(fetchRemoveSneakers(props._id));
-			dispatch(fetchAllSneakers);
+			dispatch(fetchAllSneakers());
 		}
 	};
 
