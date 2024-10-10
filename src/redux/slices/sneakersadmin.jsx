@@ -5,7 +5,12 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 export const fetchSneakersAdmin = createAsyncThunk(
 	'sneakers/fetchSneakersAdmin',
 	async () => {
-		const { data } = await axios.get('/sneakers_admin');
+		const token = window.localStorage.getItem('token');
+
+		const { data } = await axios.get('/sneakers_admin', {
+			headers: { Authorization: `Bearer ${token}` },
+		});
+
 		return data;
 	}
 );
